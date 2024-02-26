@@ -34,3 +34,6 @@ const styles = StyleSheet.create({
 
 
 export default App;
+
+
+//no agarro el commit
