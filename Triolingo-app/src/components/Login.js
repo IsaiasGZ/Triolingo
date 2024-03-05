@@ -18,7 +18,7 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.container}>
 
       <Image
-        // source={require('./assets/muerdeaki.jpg')}
+        source={require('../../assets/muerdeaki.jpg')}
         style={styles.image}
         />
       
@@ -83,6 +83,11 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50, 
     marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#ddd',
+    marginBottom: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
   },
 
   registerLink: {

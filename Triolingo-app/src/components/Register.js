@@ -6,11 +6,13 @@ const RegisterScreen = () => {
   const [Nombre, setNombre] = useState('');
   const [Edad, setEdad] = useState('');
   const [Contrasena, setContrasena] = useState('');
+  const [Nickname, setNickname] = useState('');
 
   const handleRegister = () => {
     // Por ahora, solo mostramos las datos ingresadas
     const userData = {
       Nombre: Nombre,
+      Nickname: Nickname,
       Email: Email,
       Edad: Edad,
       Contrasena: Contrasena
@@ -23,7 +25,7 @@ const RegisterScreen = () => {
 
     <View style={styles.container}>
       <Image
-        // source={require('./assets/muerdeaki.jpg')}
+        source={require('../../assets/muerdeaki.jpg')}
         style={styles.image}
       />
 
@@ -35,6 +37,13 @@ const RegisterScreen = () => {
         placeholder="Nombre"
         onChangeText={text => setNombre(text)}
         value={Nombre}
+      />
+
+<TextInput
+        style={styles.input}
+        placeholder="Nicname"
+        onChangeText={text => setNickname(text)}
+        value={Nickname}
       />
 
       <TextInput
@@ -66,6 +75,7 @@ const RegisterScreen = () => {
         title="Registrarse"
         onPress={handleRegister}
         color={'#81779B'}
+        
       />
 
     </View>
@@ -97,6 +107,12 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50, 
     marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#ddd',
+    marginBottom: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    
   },
 });
 

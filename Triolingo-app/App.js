@@ -1,6 +1,5 @@
 import LoginScreen from './src/components/Login';
 import RegisterScreen from './src/components/Register';
-import NavigationBar from './src/components/Nav-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,14 +10,23 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
   <View style={styles.container}>
-    {/* <NavigationBar> */}
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+         screenOptions={{
+          headerStyle: {
+            backgroundColor: '#7180A8',
+          },
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+        >
+
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-    {/* </NavigationBar> */}
   </View>
   );
 };
@@ -27,13 +35,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ECECFF',
-    alignItems: 'down',
+    alignItems: 'nada',
     justifyContent: 'center',
   },
 });
 
 
 export default App;
-
-
-//no agarro el commit
