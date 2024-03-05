@@ -16,6 +16,7 @@ const RegisterScreen = () => {
       email: Email,
       age: Edad,
       contra: Contrasena
+
     };
     console.log(userData);
     axios({
@@ -29,6 +30,7 @@ const RegisterScreen = () => {
     .catch(function (error) {
       console.log(error);
     });
+
     Alert.alert('Registro exitoso', JSON.stringify(userData));
   };
 

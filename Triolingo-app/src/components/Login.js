@@ -1,16 +1,22 @@
-<<<<<<< Updated upstream
-import {useForm, Coroller} from 'react-hook-form';
-
-export default function LoginForm(props){
-    const {control, handleSubmit, errors, setValue} = useForm();
-    const onSubmit = (data) =>[];
-=======
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 const LoginScreen = ({ navigation }) => {
+
+  const [user, setUser] = useState([]);
+
+    const fetchData = () => {
+      return axios.get("http://localhost:9000/api/users")
+      .then((response) => setUser(response.data))
+      .catch((error) => console.log(error));
+    }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +39,9 @@ const LoginScreen = ({ navigation }) => {
         />
       
       <Text style={styles.title}>Inicio de sesión</Text>
+      <Text>{user && user.length > 0 && user.map((userObj, index) => (
+          <Text key={userObj._id}>{userObj.name} {userObj.email}</Text>
+        ))}</Text>
 
       <TextInput
         style={styles.input}
@@ -62,5 +71,46 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
     </View>
   );
->>>>>>> Stashed changes
 };
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+
+  input: {
+    height: 40,
+    width: '100%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50, 
+    marginBottom: 20,
+  },
+
+  registerLink: {
+    fontSize: 12,
+    marginTop: 10,
+    color: '#000',
+    textDecorationLine: 'none',
+  },
+
+});
+
+export default LoginScreen;
