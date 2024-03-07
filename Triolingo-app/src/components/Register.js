@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image } from 'react-native';
+import axios from 'axios';
+
 
 const RegisterScreen = () => {
   const [Email, setEmail] = useState('');
@@ -8,17 +10,31 @@ const RegisterScreen = () => {
   const [Contrasena, setContrasena] = useState('');
 
   const handleRegister = () => {
-    // Por ahora, solo mostramos las datos ingresadas
+    // Ya se guardan los datos en la BD
     const userData = {
-      Nombre: Nombre,
-      Email: Email,
-      Edad: Edad,
-      Contrasena: Contrasena
+      name: Nombre,
+      email: Email,
+      age: Edad,
+      contra: Contrasena
+
     };
+    console.log(userData);
+    axios({
+      method: 'POST',
+      url: 'http://localhost:9000/api/users',
+      data: userData,
+    })
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     Alert.alert('Registro exitoso', JSON.stringify(userData));
   };
 
-  
+
   return (
 
     <View style={styles.container}>

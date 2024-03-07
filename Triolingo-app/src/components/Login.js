@@ -1,7 +1,23 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 const LoginScreen = ({ navigation }) => {
+
+  const [user, setUser] = useState([]);
+
+    const fetchData = () => {
+      return axios.get("http://localhost:9000/api/users")
+      .then((response) => setUser(response.data))
+      .catch((error) => console.log(error));
+    }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,6 +39,9 @@ const LoginScreen = ({ navigation }) => {
         />
       
       <Text style={styles.title}>Inicio de sesión</Text>
+      <Text>{user && user.length > 0 && user.map((userObj, index) => (
+          <Text key={userObj._id}>{userObj.name} {userObj.email}</Text>
+        ))}</Text>
 
       <TextInput
         style={styles.input}

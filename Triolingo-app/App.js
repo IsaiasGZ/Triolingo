@@ -1,4 +1,6 @@
 import LoginScreen from './src/components/Login';
+import { useEffect, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import RegisterScreen from './src/components/Register';
 import NavigationBar from './src/components/Nav-bar';
 import React from 'react';
@@ -35,5 +37,3 @@ const styles = StyleSheet.create({
 
 export default App;
 
-
-//no agarro el commit
