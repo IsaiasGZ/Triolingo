@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   respuestaButton: {
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#B3AEDB',
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginBottom: 10,
