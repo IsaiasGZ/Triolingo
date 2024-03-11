@@ -7,6 +7,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const LoginScreen = ({ navigation }) => {
 
   const [user, setUser] = useState([]);
+    const fetchData = () => {
+      return axios.get("http://localhost:9000/api/users")
+      .then((response) => setUser(response.data))
+      .catch((error) => console.log(error));
+    }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
