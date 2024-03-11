@@ -16,12 +16,11 @@ const RegisterScreen = () => {
       email: Email,
       age: Edad,
       contra: Contrasena
-
     };
     console.log(userData);
     axios({
       method: 'POST',
-      url: 'http://localhost:9000/api/users',
+      url: 'http://localhost:9000/api/register',
       data: userData,
     })
     .then(function (response) {

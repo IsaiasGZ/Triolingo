@@ -2,6 +2,7 @@ import LoginScreen from './src/components/Login';
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import RegisterScreen from './src/components/Register';
+import RegisterScree from './src/components/Home';
 import NavigationBar from './src/components/Nav-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
@@ -18,6 +19,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="Home" component={RegisterScree} />
         </Stack.Navigator>
       </NavigationContainer>
     {/* </NavigationBar> */}

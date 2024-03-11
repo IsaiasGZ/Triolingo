@@ -1,16 +1,63 @@
 const express = require("express");
 const userSchema = require("../models/user");
+const user = require("../models/user");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-//create user
-router.post("/users", (req, res) => {
-    const user = userSchema(req.body);
-    user.save()
-        .then((data) => res.json(data))
-        .catch((error) => res.json({message: error}));
-});
+const JWT_SECRET =
+  "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jdsds039[]]pou89ywe";
 
+//create user
+router.post("/register", async (req, res) => {
+    const { name, age, email, contra } = req.body;
+    console.log(req.body);
+  
+    const oldUser = await userSchema.findOne({ email: email });
+  
+    if(oldUser) {
+      return res.send({ data: "User already exists!!" });
+    }
+    const encryptedPassword = await bcrypt.hash(contra, 10);
+  
+    try {
+      await user.create({
+        name: name,
+        age: age,
+        email: email,
+        contra: encryptedPassword
+      });
+      res.send({ status: "ok", data: "User Created" });
+    } catch (error) {
+      res.send({ status: "error 404", data: error });
+    }
+  });
+
+  //login users 
+  router.post("/login-user", async (req, res) => {
+    const { email, contra } = req.body;
+    console.log(req.body);
+    const oldUser = await userSchema.findOne({ email: email });
+  
+    if (!oldUser) {
+      return res.send({ data: "Email doesn't exists!!" });
+    }
+    
+    if (await bcrypt.compare(contra, oldUser.contra)) {
+      console.log("holaa");
+      const token = jwt.sign({ email: oldUser.email }, JWT_SECRET);
+      console.log(token);
+      if (res.status(201)) {
+        return res.send({
+          status: "ok",
+          data: token,
+        });
+      } else {
+        return res.send({ error: "error" });
+      }
+    }
+  });
 
 //get all users
 router.get("/users", (req, res) => {
@@ -28,6 +75,18 @@ router.get("/users/:name", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({message: error}));
 });
+
+router.post("/users", async (req, res) =>{
+    const { email, contra } = req.body;
+    const oldUser = await userSchema.findOne({email: email});
+    
+    if(!oldUser){
+        return res.send({data: "user doesnt exist!"})
+    };
+    if(oldUser){
+        return res.send({data: "user exist!"})
+    }
+})
 
 //update a user
 router.put("/users/:id", (req, res) => {
