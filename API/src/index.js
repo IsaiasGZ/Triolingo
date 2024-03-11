@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 //middleware
-app.use(cors()); 
+app.use(cors());
 app.use(express.json()); //Se transforman los datos para poder agregar a la bd
 app.use('/api', userRoutes);
 
