@@ -56,5 +56,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-
+//joto el isa
 export default LeccionScreen;
