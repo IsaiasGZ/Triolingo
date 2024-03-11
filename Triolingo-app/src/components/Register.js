@@ -6,6 +6,7 @@ const RegisterScreen = () => {
   const [Nombre, setNombre] = useState('');
   const [Edad, setEdad] = useState('');
   const [Contrasena, setContrasena] = useState('');
+  const [Confcontrasena, setConfcontrasena] = useState('');
   const [Nickname, setNickname] = useState('');
 
   const handleRegister = () => {
@@ -15,7 +16,8 @@ const RegisterScreen = () => {
       Nickname: Nickname,
       Email: Email,
       Edad: Edad,
-      Contrasena: Contrasena
+      Contrasena: Contrasena,
+      Confcontrasena: Confcontrasena
     };
     Alert.alert('Registro exitoso', JSON.stringify(userData));
   };
@@ -39,7 +41,7 @@ const RegisterScreen = () => {
         value={Nombre}
       />
 
-<TextInput
+      <TextInput
         style={styles.input}
         placeholder="Nicname"
         onChangeText={text => setNickname(text)}
@@ -70,6 +72,14 @@ const RegisterScreen = () => {
         value={Contrasena}
         secureTextEntry={true}
       />
+       
+       <TextInput
+        style={styles.input}
+        placeholder="Contraseña"
+        onChangeText={text => setConfcontrasena(text)}
+        value={Confcontrasena}
+        secureTextEntry={true}
+      />
 
       <Button
         title="Registrarse"
@@ -97,7 +107,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '100%',
-    borderColor: 'gray',
+    borderColor: 'white',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
