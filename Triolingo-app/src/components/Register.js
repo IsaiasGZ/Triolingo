@@ -8,14 +8,25 @@ const RegisterScreen = () => {
   const [Nombre, setNombre] = useState('');
   const [Edad, setEdad] = useState('');
   const [Contrasena, setContrasena] = useState('');
+  const [Confcontrasena, setConfcontrasena] = useState('');
+  const [Nickname, setNickname] = useState('');
 
   const handleRegister = () => {
     // Ya se guardan los datos en la BD
     const userData = {
+<<<<<<< HEAD
       name: Nombre,
       email: Email,
       age: Edad,
       contra: Contrasena
+=======
+      Nombre: Nombre,
+      Nickname: Nickname,
+      Email: Email,
+      Edad: Edad,
+      Contrasena: Contrasena,
+      Confcontrasena: Confcontrasena
+>>>>>>> eder
     };
     console.log(userData);
     axios({
@@ -38,7 +49,7 @@ const RegisterScreen = () => {
 
     <View style={styles.container}>
       <Image
-        // source={require('./assets/muerdeaki.jpg')}
+        source={require('../../assets/muerdeaki.jpg')}
         style={styles.image}
       />
 
@@ -50,6 +61,13 @@ const RegisterScreen = () => {
         placeholder="Nombre"
         onChangeText={text => setNombre(text)}
         value={Nombre}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Nicname"
+        onChangeText={text => setNickname(text)}
+        value={Nickname}
       />
 
       <TextInput
@@ -76,11 +94,20 @@ const RegisterScreen = () => {
         value={Contrasena}
         secureTextEntry={true}
       />
+       
+       <TextInput
+        style={styles.input}
+        placeholder="Contraseña"
+        onChangeText={text => setConfcontrasena(text)}
+        value={Confcontrasena}
+        secureTextEntry={true}
+      />
 
       <Button
         title="Registrarse"
         onPress={handleRegister}
         color={'#81779B'}
+        
       />
 
     </View>
@@ -102,7 +129,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '100%',
-    borderColor: 'gray',
+    borderColor: 'white',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -112,6 +139,12 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50, 
     marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#ddd',
+    marginBottom: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    
   },
 });
 
