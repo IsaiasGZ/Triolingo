@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
 
   const [user, setUser] = useState([]);
-
     const fetchData = () => {
       return axios.get("http://localhost:9000/api/users")
       .then((response) => setUser(response.data))
@@ -17,13 +17,28 @@ const LoginScreen = ({ navigation }) => {
     fetchData();
   }, [])
 
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     // Por ahora, solo mostraremos las datos ingresadas
     Alert.alert('Credenciales', `Correo electrónico: ${email}, Contraseña: ${password}`);
+
+    console.log(email, password);
+    const userData = {
+      email: email,
+      contra: password,
+    };
+
+    axios.post('http://localhost:9000/api/login-user', userData).then(res => {
+      console.log(res.data);
+      if (res.data.status == 'ok') {
+        Alert.alert('Logged In Successfull');
+        AsyncStorage.setItem('token', res.data.data);
+        AsyncStorage.setItem('isLoggedIn', JSON.stringify(true));
+        navigation.navigate('Home');
+      };
+    });
   };
 
   const handleRegisterLink = () => {
