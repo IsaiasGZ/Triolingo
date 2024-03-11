@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const PreguntaScreen = () => {
+const LeccionScreen = () => {
   const [pregunta, setPregunta] = useState(''); //se agrega id de la pregunta o la pregunta en si
   const [respuestas, setRespuestas] = useState(['']); // se agrega las posibles respuestas de la pregunta
 
