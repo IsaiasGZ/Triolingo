@@ -11,7 +11,7 @@ const JWT_SECRET =
 
 //create user
 router.post("/register", async (req, res) => {
-    const { name, age, email, contra } = req.body;
+    const { name, age, email, contra, username } = req.body;
     console.log(req.body);
   
     const oldUser = await userSchema.findOne({ email: email });
@@ -26,7 +26,8 @@ router.post("/register", async (req, res) => {
         name: name,
         age: age,
         email: email,
-        contra: encryptedPassword
+        contra: encryptedPassword,
+        username: username
       });
       res.send({ status: "ok", data: "User Created" });
     } catch (error) {

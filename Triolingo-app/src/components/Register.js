@@ -13,35 +13,46 @@ const RegisterScreen = () => {
 
   const handleRegister = () => {
     // Ya se guardan los datos en la BD
-    const userData = {
-<<<<<<< HEAD
-      name: Nombre,
-      email: Email,
-      age: Edad,
-      contra: Contrasena
-=======
-      Nombre: Nombre,
-      Nickname: Nickname,
-      Email: Email,
-      Edad: Edad,
-      Contrasena: Contrasena,
-      Confcontrasena: Confcontrasena
->>>>>>> eder
-    };
-    console.log(userData);
-    axios({
-      method: 'POST',
-      url: 'http://localhost:9000/api/register',
-      data: userData,
-    })
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-    Alert.alert('Registro exitoso', JSON.stringify(userData));
+    //valida que la contrasena sea la misma, ademas que sea mayor a 6 caracteres
+    //lo mismo con el nombre y username
+    if(Nombre.length > 6){
+      if(Contrasena == Confcontrasena && Contrasena.length > 6){
+        const userData = {
+          name: Nombre,
+          age: Edad,
+          email: Email,
+          contra: Contrasena,
+          username: Nickname,
+        };
+        console.log(userData);
+        axios({
+          method: 'POST',
+          url: 'http://localhost:9000/api/register',
+          data: userData,
+        })
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    
+        Alert.alert('Registro exitoso', JSON.stringify(userData));
+      }
+      else{
+        Alert.alert('Contra mala');
+        console.log('====================================');
+        console.log("contra mala");
+        console.log('====================================');
+      }
+      
+    }
+    else{
+      Alert.alert('usuario corto');
+      console.log('====================================');
+      console.log("username corto");
+      console.log('====================================');
+    }
   };
 
 
@@ -49,7 +60,7 @@ const RegisterScreen = () => {
 
     <View style={styles.container}>
       <Image
-        source={require('../../assets/muerdeaki.jpg')}
+        source={require('../../assets/splash.png')}
         style={styles.image}
       />
 
