@@ -1,22 +1,30 @@
-import { useEffect, useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet, Text, Image } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import LeccionScreen from '../screens/Lecciones';
+const Drawer = createDrawerNavigator();
 import axios from 'axios';
 
 
 const HomeScreen = () => {
   return (
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Lecciones" component={LeccionScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    //   <View style={styles.container}>
+    //   <Image
+    //     // source={require('./assets/muerdeaki.jpg')}
+    //     style={styles.image}
+    //   />
 
-    <View style={styles.container}>
-      <Image
-        // source={require('./assets/muerdeaki.jpg')}
-        style={styles.image}
-      />
 
-
-      <Text style={styles.title}>Home</Text>
+    //   <Text style={styles.title}>Home</Text>
       
-    </View>
-  );
+    // </View>
+    );
 }; 
 
 const styles = StyleSheet.create({
