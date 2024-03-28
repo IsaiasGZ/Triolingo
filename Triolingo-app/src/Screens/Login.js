@@ -26,7 +26,7 @@ const LoginScreen = ({ navigation }) => {
         Alert.alert('Logged In Successfull');
         AsyncStorage.setItem('token', res.data.data);
         AsyncStorage.setItem('isLoggedIn', JSON.stringify(true));
-        navigation.navigate('Lecciones');
+        navigation.navigate('Inicio');
       };
     });
   };
