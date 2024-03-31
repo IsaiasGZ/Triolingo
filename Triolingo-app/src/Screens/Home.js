@@ -1,13 +1,13 @@
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-
+import MyCarousel from '../Components/Carrusel';
 
 const HomeScreen = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.title}>Niveles</Text>
-        {/* Otros elementos y componentes aquí */}
         <Text style={styles.title}>Nivel de ingles</Text>
+        <MyCarousel></MyCarousel>
       </View>
 
       <View style={styles.container}>
