@@ -2,9 +2,8 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from './src/screens/Login';
-import RegisterScreen from './src/screens/Register';
-import LeccionScreen from './src/screens/Lecciones'
+import LoginScreen from './src/components/Login';
+import RegisterScreen from './src/components/Register';
 import InicioDrawerScreen from './src/Components/Inicio';
 
 const Stack = createStackNavigator();
@@ -26,7 +25,6 @@ const App = () => {
         >
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Lecciones" component={LeccionScreen} />
           <Stack.Screen name="Inicio" component={InicioDrawerScreen} />
         </Stack.Navigator>
       </NavigationContainer>
