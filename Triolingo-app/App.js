@@ -1,14 +1,12 @@
-import LoginScreen from './src/components/Login';
-import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import RegisterScreen from './src/components/Register';
-
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import RegisterScreen from './src/Components/Register';
+import LoginScreen from './src/Components/Login';
 import CarouselScreen from './src/components/carousel';
-import HomeScreen from './src/screens/Home';
+import HomeScreen from './src/Screens/Home';
+
 
 const Stack = createStackNavigator();
 
@@ -17,7 +15,8 @@ const App = () => {
   <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator
-         screenOptions={{
+          // initialRouteName="Login"  // Establecer la pantalla de inicio como "Login"
+          screenOptions={{
           headerStyle: {
             backgroundColor: '#7180A8',
           },

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';

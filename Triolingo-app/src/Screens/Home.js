@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useRef } from 'react';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from 'react-native';
 import PagerView from 'react-native-pager-view';
-import InicioDrawerScreen from '../components/Inicio';
 
 // npx expo install react-native-pager-view
 const images = [

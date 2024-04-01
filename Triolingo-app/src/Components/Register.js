@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image } from 'react-native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const RegisterScreen = () => {
