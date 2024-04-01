@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, TextInput, Button, Alert, StyleSheet, Text, Image } from 'react-native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const RegisterScreen = () => {
@@ -27,7 +28,7 @@ const RegisterScreen = () => {
         console.log(userData);
         axios({
           method: 'POST',
-          url: 'http://localhost:9000/api/register',
+          url: 'http://192.168.0.120:9000/api/register',
           data: userData,
         })
         .then(function (response) {
@@ -37,10 +38,11 @@ const RegisterScreen = () => {
           console.log(error);
         });
     
-        Alert.alert('Registro exitoso', JSON.stringify(userData));
+        Alert.alert('Registro exitoso: Favor de Iniciar Sesion con su correo y contrasena');
+        
       }
       else{
-        Alert.alert('Contra mala');
+        Alert.alert('Contraseña demasiado corta o contraseñas no coinciden');
         console.log('====================================');
         console.log("contra mala");
         console.log('====================================');
@@ -48,7 +50,7 @@ const RegisterScreen = () => {
       
     }
     else{
-      Alert.alert('usuario corto');
+      Alert.alert('Usuario demasiado corto');
       console.log('====================================');
       console.log("username corto");
       console.log('====================================');
@@ -108,7 +110,7 @@ const RegisterScreen = () => {
        
        <TextInput
         style={styles.input}
-        placeholder="Contraseña"
+        placeholder="Confirmar contraseña"
         onChangeText={text => setConfcontrasena(text)}
         value={Confcontrasena}
         secureTextEntry={true}

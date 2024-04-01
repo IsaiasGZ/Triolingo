@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import PagerView from 'react-native-pager-view';
-import InicioDrawerScreen from '../components/Inicio';
 
 // npx expo install react-native-pager-view
 const images = [
@@ -15,7 +14,7 @@ const images = [
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-export default function HomeScreen() {
+export default function CarouselScreen() {
   const ref = useRef();
   const [imgActive, setimgActive] = useState(0);
 
@@ -29,44 +28,6 @@ export default function HomeScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Nivel de ingles</Text>
-      <PagerView 
-        style={styles.pager} 
-        ref={ref}
-        initialPage={0}
-      >
-        <View key="1" style={styles.wrapDot}>
-          <Image
-            resizeMode='stretch'
-            style={styles.wrap}
-            source={{uri: 'https://www.formatmallorca.com/wp-content/uploads/2021/01/curso-ingles-a1.jpg'}}
-            />
-            <Text style={styles.dotActive}> ● <Text style={styles.dot}>● <Text style={styles.dot}>●</Text></Text></Text>
-        </View>
-        <View key="2">
-          <Image
-            resizeMode='stretch'
-            style={styles.wrap}
-            source={{uri: 'https://www.formatmallorca.com/wp-content/uploads/2021/01/curso-ingles-a2.jpg'}}
-            />
-            <Text style={styles.dot}> ● <Text style={styles.dotActive}>● <Text style={styles.dot}>●</Text></Text></Text>
-        </View>
-        <View key="3">
-          <Image
-            resizeMode='stretch'
-            style={styles.wrap}
-            source={{uri: 'https://facialix.com/wp-content/uploads/2023/11/curso-gratis-ingles-B2.jpg'}}
-            />
-            <Text style={styles.dot}> ● <Text style={styles.dot}>● <Text style={styles.dotActive}>●</Text></Text></Text>
-        </View>
-      </PagerView>
-      <StatusBar style="auto" />
-
-
-      {/*Aparece el segundo carousel*/}
-
-
-      <Text style={styles.title}>Lecciones</Text>
       <PagerView 
         style={styles.pager} 
         ref={ref}
@@ -132,10 +93,5 @@ const styles = StyleSheet.create({
     margin: 3,
     color: 'black',
     alignSelf: 'center'
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
+  }
 });

@@ -4,11 +4,9 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 const NivelesScreen = () => {
   // Datos de los niveles
   const niveles = [
-    { nombre: 'Principiante', imagen: require({ uri: 'https://www.formatmallorca.com/wp-content/uploads/2021/01/curso-ingles-a1.jpg' }) },
-    { nombre: 'Intermedio', imagen: require({ uri: 'https://www.formatmallorca.com/wp-content/uploads/2021/01/curso-ingles-a2.jpg' }) },
-    { nombre: 'Avanzado', imagen: require({ uri: 'https://facialix.com/wp-content/uploads/2023/11/curso-gratis-ingles-B2.jpg' }) },
-    { nombre: 'Experto', imagen: require('./imagenes/experto.png') },
-    { nombre: 'Maestro', imagen: require('./imagenes/maestro.png') }
+    { uri: 'https://www.formatmallorca.com/wp-content/uploads/2021/01/curso-ingles-a1.jpg' },
+    { uri: 'https://www.formatmallorca.com/wp-content/uploads/2021/01/curso-ingles-a2.jpg' },
+    { uri: 'https://facialix.com/wp-content/uploads/2023/11/curso-gratis-ingles-B2.jpg' }
   ];
 
   // Función para manejar el clic en un nivel
