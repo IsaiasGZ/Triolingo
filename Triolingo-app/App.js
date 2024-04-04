@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import RegisterScreen from './src/Components/Register';
 import LoginScreen from './src/Components/Login';
-import CarouselScreen from './src/components/carousel';
+import CarouselScreen from './src/Components/carousel';
 import HomeScreen from './src/Screens/Home';
 
 
